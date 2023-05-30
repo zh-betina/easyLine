@@ -1,21 +1,17 @@
+import java.util.*;
+
 class VoyageurPrivilege extends Voyageur {
-    private String codePrivilege;
+    private long idCodePrivilege;
 
-    public VoyageurPrivilege(String nom, int age) {
-        super(nom, age);
+    public VoyageurPrivilege(String nom, Date birthDate) {
+        super(nom, birthDate);
     }
 
-    public String getCodePrivilege() {
-        return this.codePrivilege;
+    public long getCodePrivilege() {
+        return this.idCodePrivilege;
     }
 
-    public void setCodePrivilege(String codePrivilege) {
-        this.codePrivilege = codePrivilege;
-    }
-
-    public String toString() {
-        return "Voyageur : \n" + this.nom + "\n" + Integer.toString(this.age) 
-        + "\n" + this.bagage.toString() + this.adressePostale.toString()
-        + "\n Code privilege : " + this.codePrivilege + "\n"; 
+    public void setCodePrivilege(long idCodePrivilege) {
+        this.idCodePrivilege = idCodePrivilege;
     }
 }

@@ -1,21 +1,17 @@
-class VoyageurHandicape extends Voyageur {
-    private String handicap; 
+import java.util.*;
 
-    public VoyageurHandicape(String nom, int age) {
-        super(nom, age);
+class VoyageurHandicap extends Voyageur {
+    private long idHandicap;
+
+    public VoyageurHandicap(String nom, Date birthDate) {
+        super(nom, birthDate);
     }
 
-    public String getHandicap() {
-        return this.handicap;
+    public long getHandicap() {
+        return this.idHandicap;
     }
 
-    public void setHandicap(String handicap) {
-        this.handicap = handicap;
-    }
-
-    public String toString() {
-        return "Voyageur : \n" + this.nom + "\n" + Integer.toString(this.age) 
-        + "\n" + this.bagage.toString() + this.adressePostale.toString()
-        + "\n Type d'handicap : " + this.handicap + "\n"; 
+    public void setHandicap(long idHandicap) {
+        this.idHandicap = idHandicap;
     }
 }

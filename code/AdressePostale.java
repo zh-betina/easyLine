@@ -2,6 +2,7 @@ class AdressePostale {
     private String street;
     private String city;
     private String postalCode;
+    private long id;
 
     public AdressePostale() {
         
@@ -20,7 +21,7 @@ class AdressePostale {
     }
 
     public String toString() {
-        return "Addresse : \n" + this.street + "\n" + this.city + "\n" + this.postalCode + "\n \n";
+        return this.street + "\n" + this.city + "\n" + this.postalCode + "\n \n";
     }
 
     public void setStreet(String street) {
@@ -46,4 +47,12 @@ class AdressePostale {
     public String getPostalCode() {
         return this.postalCode;
     }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    } 
 }

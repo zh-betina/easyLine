@@ -39,21 +39,21 @@ class AgenceVoyage {
         nbDeVoyageurs = scanner.nextInt();
         int counter = 1;
 
-        while (nbDeVoyageurs > 0) {
-                System.out.printf("%d \n", nbDeVoyageurs);
-                System.out.printf("Saisissez le nom du voyageur numero %d \n", counter);
+        // while (nbDeVoyageurs > 0) {
+        //         System.out.printf("%d \n", nbDeVoyageurs);
+        //         System.out.printf("Saisissez le nom du voyageur numero %d \n", counter);
 
-                String nom = scanner.nextLine();
-                nom = scanner.nextLine();
+        //         String nom = scanner.nextLine();
+        //         nom = scanner.nextLine();
 
-                System.out.printf("Saisissez l'age du voyageur numero %d \n", counter);
-                int age = scanner.nextInt();
-                Voyageur newVoyageur = new Voyageur(nom, age);
-                counter++;
-                nbDeVoyageurs--;
+        //         System.out.printf("Saisissez l'age du voyageur numero %d \n", counter);
+        //         int age = scanner.nextInt();
+        //         Voyageur newVoyageur = new Voyageur(nom, age);
+        //         counter++;
+        //         nbDeVoyageurs--;
                 
-                this.voyageurs.add(newVoyageur);
-            }
+        //         this.voyageurs.add(newVoyageur);
+        //     }
     }
 
     public Voyageur getVoyageurByNom() {
