@@ -3,6 +3,7 @@ import java.sql.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import java.util.Properties;
 
 public class VoyageurDAO extends DAO<Voyageur> {
     public Connection connection = new DBconn().getConnection();
@@ -28,6 +29,7 @@ public class VoyageurDAO extends DAO<Voyageur> {
 
     @Override
     public Voyageur insert(Voyageur v) {
+        System.out.println(this.connection.toString());
         Voyageur voyageur = new Voyageur(v.getNom(), v.getBirthDate());
 
         long categorieId = v.getCategory().ordinal();
@@ -71,7 +73,7 @@ public class VoyageurDAO extends DAO<Voyageur> {
             preparedStatement.setString(4, v.getNom());
             preparedStatement.setString(5, strDate);
             preparedStatement.setLong(6, v.getId());
-            ResultSet result = preparedStatement.executeQuery();
+            preparedStatement.executeQuery();
             preparedStatement.close();
             return true;
         } catch (SQLException e) {
@@ -85,7 +87,7 @@ public class VoyageurDAO extends DAO<Voyageur> {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "DELETE FROM voyageur WHERE id = " + id);
-            ResultSet result = preparedStatement.executeQuery();
+            preparedStatement.executeQuery();
             preparedStatement.close();
             return true;
         } catch (SQLException e) {

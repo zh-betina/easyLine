@@ -32,12 +32,12 @@ class AgenceVoyage {
     }
 
     public void addVoyageur() {
-        int nbDeVoyageurs = 0;
+        // int nbDeVoyageurs = 0;
 
         System.out.println("Combien de voyageurs aimerez-vous saisir : ");
         Scanner scanner = new Scanner(System.in);
-        nbDeVoyageurs = scanner.nextInt();
-        int counter = 1;
+        // nbDeVoyageurs = scanner.nextInt();
+        // int counter = 1;
 
         // while (nbDeVoyageurs > 0) {
         //         System.out.printf("%d \n", nbDeVoyageurs);
@@ -54,6 +54,7 @@ class AgenceVoyage {
                 
         //         this.voyageurs.add(newVoyageur);
         //     }
+        scanner.close();
     }
 
     public Voyageur getVoyageurByNom() {
@@ -70,12 +71,11 @@ class AgenceVoyage {
                 isFound = true;
                 break;
             } else {
-                //TODO : ameliorer ca
                 if (!isFound) System.out.println("Voyageur avec ce nom n'existe pas. \n \n");
                 isFound = true;
             }
         }
-
+        scanner.close();
         return foundVoyageur;
     }
 
@@ -107,6 +107,7 @@ class AgenceVoyage {
                 isFound = true;
             }
         }
+        scanner.close();
     }
 
     public void displayInfo() {
