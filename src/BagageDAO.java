@@ -1,9 +1,5 @@
 import java.sql.Connection;
 import java.sql.*;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.text.DateFormat;
-import java.util.Properties;
 
 public class BagageDAO extends DAO<Bagage> {
     public Connection connection = new DBconn().getConnection();
@@ -12,12 +8,11 @@ public class BagageDAO extends DAO<Bagage> {
     public Bagage select(long id) {
         Bagage bagage = new Bagage();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bagage WHERE id = '?'");
-            preparedStatement.setString(1, Long.toString(id));
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM bagage WHERE id = ?");
+            preparedStatement.setLong(1, id);
             ResultSet result = preparedStatement.executeQuery();
             result.next();
             double weight = result.getDouble("poids");
-
             preparedStatement.close();
             bagage = new Bagage(weight);
         } catch (SQLException e) {
@@ -33,11 +28,13 @@ public class BagageDAO extends DAO<Bagage> {
         try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement(
-                            "INSERT INTO bagage (poids) VALUES ( ?)");
+                            "INSERT INTO bagage (poids) VALUES ( ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setDouble(1, bagage.getWeight());
             preparedStatement.executeUpdate();
-            // long bagageId = preparedStatement.getLong("id");
-            // bagage.setId(bagageId);
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            resultSet.next();
+            long bagageId = resultSet.getLong(1);
+            bagage.setId(bagageId);
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -53,7 +50,7 @@ public class BagageDAO extends DAO<Bagage> {
                     .prepareStatement("UPDATE bagage SET poids = ? WHERE id = ? ");
             preparedStatement.setDouble(1, b.getWeight());
             preparedStatement.setLong(2, b.getId());
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
             preparedStatement.close();
             return true;
         } catch (SQLException e) {
@@ -67,7 +64,7 @@ public class BagageDAO extends DAO<Bagage> {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "DELETE FROM bagage WHERE id = " + id);
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
             preparedStatement.close();
             return true;
         } catch (SQLException e) {

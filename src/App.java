@@ -13,10 +13,13 @@ public class App {
             // System.out.println(v.toString());
             // VoyageurDAO vd = new VoyageurDAO();
             // vd.insert(v);
-            double weight = 2.05;
+            double weight = 10.02;
             Bagage b = new Bagage(weight);
+            b.setId(2);
             BagageDAO bDao = new BagageDAO();
-            bDao.insert(b);
+            // bDao.insert(b);
+            bDao.delete(8);
+            // System.out.println(bResult.getWeight());
         } catch (Exception e) {
             System.out.println(e);
             e.getStackTrace();
