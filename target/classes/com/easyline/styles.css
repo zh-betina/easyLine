@@ -1,0 +1,18 @@
+.window {
+    -fx-background-color: #FFFFFF;
+}
+
+.input {
+  -fx-text-box-border: #111344 ;
+  -fx-focus-color: #111344 ;
+}
+
+.button {
+    -fx-background-color: #7CA5B8;
+    -fx-text-fill: #FFFFFF;
+}
+
+.label-msg {
+  -fx-text-fill: #fd4040;
+  -fx-alignment: center;
+}
