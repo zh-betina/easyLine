@@ -39,7 +39,7 @@
             <Insets bottom="50.0" left="50.0" right="50.0" top="130.0" />
          </padding>
          <children>
-            <ImageView fx:id="agencesIcon">
+            <ImageView fx:id="agencesIcon" onMouseClicked="#agencesIconOnAction">
                <image>
                   <Image url="@agences.png" />
                </image>
@@ -47,7 +47,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fx:id="voyageursIcon" translateX="55.0">
+            <ImageView fx:id="voyageursIcon" onMouseClicked="#voyageursIconIconOnAction" translateX="55.0">
                <image>
                   <Image url="@voyageurs.png" />
                </image>
@@ -55,7 +55,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </ImageView>
-            <ImageView fx:id="reservationsIcon" translateX="110.0">
+            <ImageView fx:id="reservationsIcon" onMouseClicked="#reservationsIconOnAction" translateX="110.0">
                <image>
                   <Image url="@reservations.png" />
                </image>

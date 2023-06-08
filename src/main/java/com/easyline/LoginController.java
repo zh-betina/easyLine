@@ -8,13 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.Scene;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import java.io.IOException;
-
 
 public class LoginController {
 
@@ -38,12 +32,12 @@ public class LoginController {
             Boolean loginResult = login.select(username, password);
             System.out.println(loginResult);
             if (loginResult == true) {
-               App myApp = new App();
-               try {
-                myApp.setRoot("MenuPage");
-            } catch(IOException e){
-              System.err.println(e.getMessage());
-           }
+                App myApp = new App();
+                try {
+                    myApp.setRoot("MenuPage");
+                } catch (IOException e) {
+                    System.err.println(e.getMessage());
+                }
             } else {
                 loginMsg.setText("Mot de passe ou le nom d'utilisateur incorrect");
             }

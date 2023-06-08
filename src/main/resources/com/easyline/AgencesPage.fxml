@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyline.AgencesController">
+   <children>
+      <ToolBar prefHeight="62.0" prefWidth="801.0">
+         <items>
+            <ImageView fitHeight="47.0" fitWidth="52.0">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label text="Bonjour !" textFill="#111344" translateX="20.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Group translateX="106.0">
+               <children>
+                  <Label layoutX="35.0" layoutY="6.0" prefHeight="21.0" prefWidth="102.0" text="AGENCES" textFill="#7ca5b8" translateX="265.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="33.0" fitWidth="26.0" translateX="263.0">
+                     <image>
+                        <Image url="@agences_icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Group>
+            <ImageView fx:id="logoutIcon" onMouseClicked="#logoutIconOnAction" translateX="456.0">
+               <image>
+                  <Image url="@logout.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </items>
+      </ToolBar>
+      <VBox prefHeight="405.0" prefWidth="801.0">
+         <children>
+            <ImageView fx:id="goBackIcon" onMouseClicked="#goBackIconOnAction">
+               <image>
+                  <Image url="@return.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <TableView fx:id="agencesTable" prefHeight="367.0" prefWidth="781.0">
+              <columns>
+                  <TableColumn prefWidth="247.0" text="Libelle" />
+                <TableColumn minWidth="0.0" prefWidth="443.0" text="Adresse postale" />
+                  <TableColumn minWidth="0.0" prefWidth="90.0" />
+              </columns>
+            </TableView>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <HBox prefHeight="41.0" prefWidth="801.0">
+         <children>
+            <ImageView fx:id="nextIcon" translateX="746.0">
+               <image>
+                  <Image url="@moveTo.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="previousIcon" rotate="177.4" translateX="652.0">
+               <image>
+                  <Image url="@moveTo.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

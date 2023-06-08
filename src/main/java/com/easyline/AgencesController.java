@@ -1,49 +1,48 @@
 package com.easyline;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuController {
+public class AgencesController {
+
     private App myApp;
 
     @FXML
-    private ImageView agencesIcon;
+    private TableView<?> agencesTable;
+
+    @FXML
+    private ImageView goBackIcon;
 
     @FXML
     private ImageView logoutIcon;
 
     @FXML
-    private ImageView reservationsIcon;
+    private ImageView nextIcon;
 
     @FXML
-    private ImageView voyageursIcon;
+    private ImageView previousIcon;
 
-    public MenuController() {
+    public AgencesController() {
         myApp = new App();
     }
 
-    public void logoutIconOnAction(MouseEvent event) {
+    @FXML
+    void logoutIconOnAction(MouseEvent event) {
         Stage stageToClose = (Stage) logoutIcon.getScene().getWindow();
         stageToClose.close();
     }
 
-    public void agencesIconOnAction(MouseEvent event) {
+    public void goBackIconOnAction(MouseEvent event) {
         try {
-            myApp.setRoot("AgencesPage");
+            myApp.setRoot("MenuPage");
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
 
-    public void reservationsIconOnAction(MouseEvent event) {
-
-    }
-    
-    public void voyageursIconIconOnAction(MouseEvent event) {
-
-    }
 }
