@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyline.MenuController">
+   <children>
+      <ToolBar prefHeight="62.0" prefWidth="801.0">
+        <items>
+            <ImageView fitHeight="47.0" fitWidth="52.0">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+            <Label text="Bonjour !" textFill="#111344" translateX="20.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logoutIcon" onMouseClicked="#logoutIconOnAction" translateX="600.0">
+               <image>
+                  <Image url="@logout.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+        </items>
+      </ToolBar>
+      <HBox prefHeight="461.0" prefWidth="801.0">
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="130.0" />
+         </padding>
+         <children>
+            <ImageView fx:id="agencesIcon">
+               <image>
+                  <Image url="@agences.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="voyageursIcon" translateX="55.0">
+               <image>
+                  <Image url="@voyageurs.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fx:id="reservationsIcon" translateX="110.0">
+               <image>
+                  <Image url="@reservations.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </children>
+</VBox>

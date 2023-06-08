@@ -22,7 +22,6 @@ public class App extends Application {
         scene = new Scene(loadFXML("LoginPage"), 801, 518);
         stage.setScene(scene);
         stage.show();
-        LoginDAO test = new LoginDAO();
     }
 
     static void setRoot(String fxml) throws IOException {
