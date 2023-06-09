@@ -9,7 +9,6 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -51,7 +50,7 @@
             </ImageView>
          </items>
       </ToolBar>
-      <VBox prefHeight="405.0" prefWidth="801.0">
+      <VBox prefHeight="446.0" prefWidth="801.0">
          <children>
             <ImageView fx:id="goBackIcon" onMouseClicked="#goBackIconOnAction">
                <image>
@@ -61,11 +60,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <TableView fx:id="agencesTable" prefHeight="367.0" prefWidth="781.0">
+            <TableView fx:id="agencesTable" prefHeight="412.0" prefWidth="781.0">
               <columns>
-                  <TableColumn prefWidth="247.0" text="Libelle" />
-                <TableColumn minWidth="0.0" prefWidth="443.0" text="Adresse postale" />
-                  <TableColumn minWidth="0.0" prefWidth="90.0" />
+                  <TableColumn minWidth="0.0" prefWidth="440.0" />
               </columns>
             </TableView>
          </children>
@@ -73,22 +70,5 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <HBox prefHeight="41.0" prefWidth="801.0">
-         <children>
-            <ImageView fx:id="nextIcon" translateX="746.0">
-               <image>
-                  <Image url="@moveTo.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="previousIcon" rotate="177.4" translateX="652.0">
-               <image>
-                  <Image url="@moveTo.png" />
-               </image>
-            </ImageView>
-         </children>
-         <padding>
-            <Insets left="10.0" right="10.0" />
-         </padding>
-      </HBox>
    </children>
 </VBox>

@@ -3,7 +3,7 @@ package com.easyline.classes;
 import java.util.*;
 
 public class AgenceVoyage {
-    // private long id;
+    private long id;
     private String nom;
     private String adresse;
     private List<Voyageur> voyageurs;
@@ -27,5 +27,9 @@ public class AgenceVoyage {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

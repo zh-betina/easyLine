@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyline.AgencesController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.easyline.VoyageursController">
    <children>
       <ToolBar prefHeight="62.0" prefWidth="801.0">
          <items>
@@ -28,7 +28,7 @@
             </Label>
             <Group translateX="106.0">
                <children>
-                  <Label layoutX="35.0" layoutY="6.0" prefHeight="21.0" prefWidth="102.0" text="AGENCES" textFill="#7ca5b8" translateX="265.0">
+                  <Label layoutX="35.0" layoutY="6.0" prefHeight="21.0" prefWidth="136.0" text="VOYAGEURS" textFill="#7ca5b8" translateX="265.0">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -40,7 +40,7 @@
                   </ImageView>
                </children>
             </Group>
-            <ImageView fx:id="logoutIcon" onMouseClicked="#logoutIconOnAction" translateX="456.0">
+            <ImageView fx:id="logoutIcon" onMouseClicked="#logoutIconOnAction" translateX="418.0">
                <image>
                   <Image url="@logout.png" />
                </image>
@@ -61,9 +61,9 @@
                </cursor>
             </ImageView>
             <TableView fx:id="agencesTable" prefHeight="412.0" prefWidth="781.0">
-              <columns>
+               <columns>
                   <TableColumn minWidth="0.0" prefWidth="440.0" />
-              </columns>
+               </columns>
             </TableView>
          </children>
          <padding>
