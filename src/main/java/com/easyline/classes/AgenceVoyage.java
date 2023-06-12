@@ -4,6 +4,7 @@ import java.util.*;
 
 public class AgenceVoyage {
     private long id;
+    private long id_adresse;
     private String nom;
     private String adresse;
     private List<Voyageur> voyageurs;
@@ -35,5 +36,13 @@ public class AgenceVoyage {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdAdresse() {
+        return this.id_adresse;
+    }
+
+    public void setIdAdresse(long id) {
+        this.id_adresse = id;
     }
 }

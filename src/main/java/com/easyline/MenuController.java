@@ -40,10 +40,18 @@ public class MenuController {
     }
 
     public void reservationsIconOnAction(MouseEvent event) {
-
+        try {
+            myApp.setRoot("VoyagesPage");
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
     
     public void voyageursIconIconOnAction(MouseEvent event) {
-
+        try {
+            myApp.setRoot("VoyageursPage");
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

@@ -2,6 +2,8 @@ package com.easyline.dao;
 
 import com.easyline.classes.*;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class AgenceVoyageDAO {
@@ -12,10 +14,11 @@ public class AgenceVoyageDAO {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "SELECT agence.id, agence.nom, adresse.libelle, adresse.ville, adresse.code_postale FROM agence INNER JOIN adresse ON agence.id_adresse = adresse.id");
+                    "SELECT agence.id, agence.id_adresse, agence.nom, adresse.libelle, adresse.ville, adresse.code_postale FROM agence INNER JOIN adresse ON agence.id_adresse = adresse.id");
             ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
                 long id = result.getLong("agence.id");
+                long id_adresse = result.getLong("agence.id_adresse");
                 String nom = result.getString("agence.nom");
                 String libelle= result.getString("adresse.libelle");
                 String ville= result.getString("adresse.ville");
@@ -23,6 +26,7 @@ public class AgenceVoyageDAO {
 
                 AdressePostale adresse = new AdressePostale(libelle, ville, codePostale);
                 AgenceVoyage agence = new AgenceVoyage(nom, adresse.toString());
+                agence.setIdAdresse(id_adresse);
                 agence.setId(id);
                 agences.add(agence);
             }
@@ -31,6 +35,24 @@ public class AgenceVoyageDAO {
             e.printStackTrace();
         }
         return agences;
+    }
+
+    public boolean update(AgenceVoyage aVoyage) {
+        AdressePostaleDAO adressePostaleDAO = new AdressePostaleDAO();
+        try {
+            
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("UPDATE agence SET id_adresse = ?, nom = ? WHERE id = ?");
+            preparedStatement.setLong(1, aVoyage.getIdAdresse());
+            preparedStatement.setString(2, aVoyage.getNom());
+            preparedStatement.setLong(3, aVoyage.getId());
+            preparedStatement.executeQuery();
+            preparedStatement.close();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // public AgenceVoyage select(long id) {
