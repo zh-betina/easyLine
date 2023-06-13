@@ -25,8 +25,8 @@ public class AgenceVoyageDAO {
                 String codePostale= result.getString("adresse.code_postale");
 
                 AdressePostale adresse = new AdressePostale(libelle, ville, codePostale);
-                AgenceVoyage agence = new AgenceVoyage(nom, adresse.toString());
-                agence.setIdAdresse(id_adresse);
+                adresse.setId(id_adresse);
+                AgenceVoyage agence = new AgenceVoyage(nom, adresse);
                 agence.setId(id);
                 agences.add(agence);
             }
@@ -38,15 +38,14 @@ public class AgenceVoyageDAO {
     }
 
     public boolean update(AgenceVoyage aVoyage) {
-        AdressePostaleDAO adressePostaleDAO = new AdressePostaleDAO();
+        System.out.println(aVoyage.getAdresse().getId());
         try {
-            
             PreparedStatement preparedStatement = connection
                     .prepareStatement("UPDATE agence SET id_adresse = ?, nom = ? WHERE id = ?");
-            preparedStatement.setLong(1, aVoyage.getIdAdresse());
+            preparedStatement.setLong(1, aVoyage.getAdresse().getId());
             preparedStatement.setString(2, aVoyage.getNom());
             preparedStatement.setLong(3, aVoyage.getId());
-            preparedStatement.executeQuery();
+            preparedStatement.executeUpdate();
             preparedStatement.close();
             return true;
         } catch (SQLException e) {

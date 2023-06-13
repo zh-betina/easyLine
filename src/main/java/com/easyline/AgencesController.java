@@ -1,5 +1,7 @@
 package com.easyline;
 
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +20,7 @@ import java.util.ResourceBundle;
 import javafx.scene.control.TableColumn.CellEditEvent;
 
 import com.easyline.classes.AgenceVoyage;
+import com.easyline.dao.AdressePostaleDAO;
 import com.easyline.dao.AgenceVoyageDAO;
 import java.io.IOException;
 
@@ -33,7 +36,19 @@ public class AgencesController implements Initializable {
     private TableColumn<AgenceVoyage, String> libelleCol;
 
     @FXML
-    private TableColumn<AgenceVoyage, String> adresseCol;
+    private TableColumn<AgenceVoyage, String> cityCol;
+
+    @FXML
+    private TableColumn<AgenceVoyage, String> streetCol;
+
+    @FXML
+    private TableColumn<AgenceVoyage, String> postalCodeCol;
+
+    @FXML
+    private TableColumn<AgenceVoyage, Number> idCol;
+
+    @FXML
+    private TableColumn<AgenceVoyage, Number> idAddrCol;
 
     @FXML
     private ImageView goBackIcon;
@@ -59,27 +74,87 @@ public class AgencesController implements Initializable {
         List<AgenceVoyage> agences = agenceDAO.selectAll();
         ObservableList<AgenceVoyage> observableAgences = FXCollections.observableArrayList(agences);
         try {
-            libelleCol = new TableColumn<AgenceVoyage, String>("Libelle");
-            adresseCol = new TableColumn<AgenceVoyage, String>("Adresse");
+            idCol = new TableColumn<AgenceVoyage, Number>("Id");
+            idAddrCol = new TableColumn<AgenceVoyage, Number>("Id addr");
+            libelleCol = new TableColumn<AgenceVoyage, String>("Nom");
+            streetCol = new TableColumn<AgenceVoyage, String>("Libellé");
+            cityCol = new TableColumn<AgenceVoyage, String>("Ville");
+            postalCodeCol = new TableColumn<AgenceVoyage, String>("Code postal");
+
+            idCol.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getId()));
+            idAddrCol.setCellValueFactory(cellData -> new SimpleLongProperty(cellData.getValue().getAdresse().getId()));
             libelleCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
-            adresseCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAdresse()));
+            streetCol.setCellValueFactory(
+                    cellData -> new SimpleStringProperty(cellData.getValue().getAdresse().getStreet()));
+            cityCol.setCellValueFactory(
+                    cellData -> new SimpleStringProperty(cellData.getValue().getAdresse().getCity()));
+            postalCodeCol.setCellValueFactory(
+                    cellData -> new SimpleStringProperty(cellData.getValue().getAdresse().getPostalCode()));
+
             libelleCol.setCellFactory(TextFieldTableCell.forTableColumn());
-            adresseCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            streetCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            cityCol.setCellFactory(TextFieldTableCell.forTableColumn());
+            postalCodeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+
+            idCol.setVisible(false);
+            idAddrCol.setVisible(false);
+
             agencesTable.setEditable(true);
-            libelleCol.setOnEditCommit(
-                    (CellEditEvent<AgenceVoyage, String> t) -> {
-                        ((AgenceVoyage) t.getTableView().getItems().get(
-                                t.getTablePosition().getRow())).setNom(t.getNewValue());
-                                String newNom = t.getRowValue().getNom();
-                        System.out.println(t.getRowValue().getNom());
-                        System.out.println(t.getRowValue().getAdresse());                        
-                    });
             agencesTable.setItems(observableAgences);
-            agencesTable.getColumns().addAll(libelleCol, adresseCol);
+            agencesTable.getColumns().addAll(idCol, idAddrCol, libelleCol, streetCol, cityCol, postalCodeCol);
+
+            setEditEvents();
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    private void setEditEvents() {
+        libelleCol.setOnEditCommit(
+                (CellEditEvent<AgenceVoyage, String> t) -> {
+                    ((AgenceVoyage) t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())).setNom(t.getNewValue());
+                    AgenceVoyageDAO agenceDao = new AgenceVoyageDAO();
+                    if (agenceDao.update(t.getRowValue())) {
+                        agencesTable.refresh();
+                    } else {
+                        System.err.println("Une erreur est survenue");
+                    }
+                });
+        streetCol.setOnEditCommit(
+                (CellEditEvent<AgenceVoyage, String> t) -> {
+                    ((AgenceVoyage) t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())).getAdresse().setStreet(t.getNewValue());
+                    AdressePostaleDAO adressePostaleDAO = new AdressePostaleDAO();
+                    if (adressePostaleDAO.update(t.getRowValue().getAdresse())) {
+                        agencesTable.refresh();
+                    } else {
+                        System.err.println("Une erreur est survenue");
+                    }
+                });
+        cityCol.setOnEditCommit(
+                (CellEditEvent<AgenceVoyage, String> t) -> {
+                    ((AgenceVoyage) t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())).getAdresse().setCity(t.getNewValue());
+                    AdressePostaleDAO adressePostaleDAO = new AdressePostaleDAO();
+                    if (adressePostaleDAO.update(t.getRowValue().getAdresse())) {
+                        agencesTable.refresh();
+                    } else {
+                        System.err.println("Une erreur est survenue");
+                    }
+                });
+        postalCodeCol.setOnEditCommit(
+                (CellEditEvent<AgenceVoyage, String> t) -> {
+                    ((AgenceVoyage) t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())).getAdresse().setPostalCode(t.getNewValue());
+                    AdressePostaleDAO adressePostaleDAO = new AdressePostaleDAO();
+                    if (adressePostaleDAO.update(t.getRowValue().getAdresse())) {
+                        agencesTable.refresh();
+                    } else {
+                        System.err.println("Une erreur est survenue");
+                    }
+                });
     }
 
     public void goBackIconOnAction(MouseEvent event) {
