@@ -6,7 +6,6 @@ public class AgenceVoyage {
     private long id;
     private String nom;
     private AdressePostale adresse;
-    private List<Voyageur> voyageurs;
 
     public AgenceVoyage(String nom, AdressePostale adresse) {
         this.nom = nom;

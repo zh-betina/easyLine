@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 
 public class VoyagesController implements Initializable {
 
-
     @FXML
     private App myApp;
 
@@ -26,7 +25,7 @@ public class VoyagesController implements Initializable {
     @FXML
     private TableView<?> voyagesTable;
 
-       @Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         // AgenceVoyageDAO agenceDAO = new AgenceVoyageDAO();
         // List<AgenceVoyage> agences = agenceDAO.selectAll();

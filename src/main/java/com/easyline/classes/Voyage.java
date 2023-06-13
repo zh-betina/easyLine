@@ -1,7 +1,8 @@
 package com.easyline.classes;
 
-import java.util.Date;
+// import java.util.Date;
 import java.util.*;
+import java.sql.Date;
 
 public class Voyage {
     private long id;
@@ -10,6 +11,7 @@ public class Voyage {
     private Date dateFin;
     private String destination;
     private double prix;
+    private String agenceNom;
 
     public Voyage() {
 
@@ -69,5 +71,13 @@ public class Voyage {
 
     public double getPrix() {
         return this.prix;
+    }
+
+    public String getAgenceNom() {
+        return this.agenceNom;
+    }
+
+    public void setAgenceNom(String nom) {
+        this.agenceNom = nom;
     }
 }

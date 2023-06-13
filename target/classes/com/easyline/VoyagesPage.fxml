@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToolBar?>
@@ -51,6 +53,12 @@
       </ToolBar>
       <VBox prefHeight="446.0" prefWidth="801.0">
          <children>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" stylesheets="@styles.css" text="Toutes les voyages" />
+                  <Button mnemonicParsing="false" stylesheets="@styles.css" text="Voyages disponibles" />
+              </buttons>
+            </ButtonBar>
             <ImageView fx:id="goBackIcon" onMouseClicked="#goBackIconOnAction">
                <image>
                   <Image url="@return.png" />

@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.easyline.dao.LoginDAO;
-
 /**
  * JavaFX App
  */

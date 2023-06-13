@@ -1,6 +1,5 @@
 package com.easyline;
 
-import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -22,7 +21,6 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import com.easyline.classes.AgenceVoyage;
 import com.easyline.dao.AdressePostaleDAO;
 import com.easyline.dao.AgenceVoyageDAO;
-import java.io.IOException;
 
 public class AgencesController implements Initializable {
 
